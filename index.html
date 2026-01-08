@@ -515,10 +515,9 @@
             max-width: var(--max-width);
             margin: 0 auto;
             padding: 0 60px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+            display: flex; /* Change from grid to flex */
+            justify-content: space-between; /* Distribute space evenly */
+            align-items: center; /* Center items vertically */
         }
 
         .our-goal-content {
@@ -893,6 +892,7 @@
             <div class="badge"><span class="dot"></span>OUR SERVICES</div>
             <h2 class="section-title">What We Offer</h2>
 
+            <div class="services-grid">
             <div class="services-grid">
                 <div class="service-card" style="background-color: #5c2d91;">
                     <div class="card-overlay">
