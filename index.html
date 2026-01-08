@@ -504,127 +504,6 @@
         }
 
         /* =========================================
-           OUR GOAL SECTION
-           ========================================= */
-        .our-goal-section {
-            background-color: var(--color-bg-main);
-            padding: 80px 20px;
-        }
-
-        .our-goal-container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 60px;
-            display: flex; /* Change from grid to flex */
-            justify-content: space-between; /* Distribute space evenly */
-            align-items: center; /* Center items vertically */
-        }
-
-        .our-goal-content {
-            background-color: var(--color-white);
-            border-radius: var(--radius-card);
-            padding: 50px 40px;
-        }
-
-        .our-goal-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background-color: var(--color-white);
-            border: 2px solid var(--color-accent-purple);
-            border-radius: 50px;
-            padding: 8px 24px;
-            width: fit-content;
-            margin-bottom: 30px;
-        }
-
-        .badge-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: var(--color-accent-purple);
-        }
-
-        .badge-text {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--color-accent-purple);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .our-goal-heading {
-            font-size: clamp(32px, 5vw, 52px);
-            font-weight: 700;
-            color: var(--color-accent-purple);
-            line-height: 1.2;
-            margin-bottom: 30px;
-            letter-spacing: -0.5px;
-        }
-
-        .our-goal-description {
-            font-size: 16px;
-            line-height: 1.8;
-            color: var(--color-text-dark);
-            margin-bottom: 40px;
-            font-weight: 400;
-        }
-
-        .our-goal-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background-color: var(--color-accent-purple);
-            color: var(--color-white);
-            border: none;
-            border-radius: var(--radius-btn);
-            padding: 16px 32px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: var(--font-main);
-        }
-
-        .our-goal-btn:hover {
-            background-color: var(--color-accent-light);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(74, 28, 110, 0.3);
-        }
-
-        .our-goal-btn svg {
-            width: 20px;
-            height: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .our-goal-btn:hover svg {
-            transform: translate(4px, -4px);
-        }
-
-        .our-goal-image {
-            width: 100%; /* Takes full width of the container */
-            height: 400px; /* Fixed height of 400 pixels */
-            border-radius: var(--radius-card); /* Applies border radius */
-            overflow: hidden; /* Hides overflow content */
-            display: flex; /* Uses flexbox for alignment */
-            align-items: center; /* Centers items vertically */
-            justify-content: center; /* Centers items horizontally */
-        }
-
-        .image-placeholder {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(74, 28, 110, 0.1) 0%, rgba(123, 45, 142, 0.1) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-accent-light);
-            font-size: 18px;
-            font-weight: 600;
-        }
-
-        /* =========================================
            PARTNERS SECTION (NEW)
            ========================================= */
         .partners-section {
@@ -893,7 +772,6 @@
             <h2 class="section-title">What We Offer</h2>
 
             <div class="services-grid">
-            <div class="services-grid">
                 <div class="service-card" style="background-color: #5c2d91;">
                     <div class="card-overlay">
                         <div class="card-content">
@@ -980,31 +858,6 @@
             </div>
 
             <div class="partners-divider"></div>
-        </div>
-    </section>
-
-    <!-- Our Goal Section -->
-    <section class="our-goal-section">
-        <div class="our-goal-container">
-            <div class="our-goal-content">
-            <div class="our-goal-badge">
-                <span class="badge-dot"></span>
-                <span class="badge-text">OUR GOAL</span>
-            </div>
-            <h2 class="our-goal-heading">EMPOWERING FINANCIAL CONFIDENCE THROUGH TRUST AND INNOVATION</h2>
-            <p class="our-goal-description">
-                At Credora, our mission is to simplify financial access through trust, transparency, and innovation. We strive to connect individuals and businesses with the right banking solutions empowering them to achieve their goals with confidence and ease.
-            </p>
-            <button class="our-goal-btn">
-                <span>Find About Us</span>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7.5 17.5L17.5 7.5M17.5 7.5H9.5M17.5 7.5V15.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </button>
-            </div>
-            <div class="our-goal-image">
-            <img src="assets/images/Bg Image.png" alt="A serene landscape featuring a tranquil lake surrounded by lush greenery and mountains in the background, conveying a sense of peace and calmness. The image includes the text 'Empowering Financial Confidence' prominently displayed in the center." style="width: 100%; height: 100%; object-fit: cover;">
-            </div>
         </div>
     </section>
 
