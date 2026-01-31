@@ -1,926 +1,454 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Credora - Financial Services</title>
+    <title>Credora - Insurance Services</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <style>
-        /* =========================================
-           RESET & VARIABLES
-           ========================================= */
-        :root {
-            --color-white: #ffffff;
-            --color-text-dim: #e0e0e0;
-            --color-text-dark: #333333;
-            --color-accent-purple: #4a1c6e;
-            --color-accent-light: #7b2d8e;
-            --color-bg-main: #f3f4f8;
-            --color-bg-placeholder: #5c2d91;
-            --color-nav-strip: rgba(60, 20, 80, 0.45); 
-            --font-main: 'Manrope', sans-serif;
-            --radius-card: 24px;
-            --radius-btn: 50px;
-            --max-width: 1490px;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: var(--font-main);
-            background-color: var(--color-bg-main);
-            color: var(--color-text-dark);
-            overflow-x: hidden;
-        }
-
-        /* =========================================
-           MAIN HERO CONTAINER
-           ========================================= */
-        .hero-container {
-            width: 100%;
-            max-width: var(--max-width);
-            min-height: 90vh;
-            border-radius: var(--radius-card);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-            margin: 20px auto;
-            color: var(--color-white);
-            
-            /* Placeholder image used. Replace with your actual image path: url('./assets/images/Bg Image.png') */
-            background: 
-                linear-gradient(105deg, rgba(82, 30, 120, 0.75) 0%, rgba(180, 50, 150, 0.4) 60%, rgba(255, 100, 150, 0.1) 100%),
-                url('assets/images/Bg%20Image.png') center/cover no-repeat,
-                var(--color-bg-placeholder);
-        }
-
-        .content-wrapper {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        }
-
-        /* =========================================
-           NAVIGATION BAR
-           ========================================= */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 30px 60px;
-            width: 100%;
-            background: transparent; 
-        }
-
-        .nav-pill {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: var(--color-nav-strip);
-            backdrop-filter: blur(8px);
-            padding: 12px 30px;
-            border-radius: 20px;
-            flex: 1;
-            margin-right: 30px;
-            max-width: 1100px;
-        }
-
-        .logo {
-            display: flex;
-            flex-direction: column;
-            line-height: 1;
-            z-index: 10;
-            margin-right: 40px;
-        }
-        
-        .logo-main {
-            font-size: 26px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-
-        .logo-sub {
-            font-size: 7px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 4px;
-            opacity: 0.8;
-        }
-
-        .nav-center {
-            display: flex;
-            flex: 1;
-            justify-content: center;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 40px;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .nav-links li a {
-            text-decoration: none;
-            color: var(--color-white);
-            font-size: 15px;
-            font-weight: 500;
-            position: relative;
-            transition: opacity 0.3s ease;
-        }
-
-        .nav-links li a:hover {
-            opacity: 0.8;
-        }
-
-        .nav-links li a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: -4px;
-            left: 50%;
-            background-color: var(--color-white);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-
-        .nav-links li a:hover::after {
-            width: 100%;
-        }
-
-        .btn-contact {
-            background-color: var(--color-white);
-            color: var(--color-accent-purple);
-            padding: 10px 24px;
-            border-radius: var(--radius-btn);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
-            transition: transform 0.2s ease;
-            white-space: nowrap;
-            margin-left: 40px;
-        }
-
-        .btn-contact:hover {
-            transform: scale(1.05);
-        }
-
-        .innovations-tag {
-            font-size: 10px;
-            line-height: 1.3;
-            text-transform: uppercase;
-            text-align: right;
-            border-left: 1px solid rgba(255,255,255,0.4);
-            padding-left: 15px;
-            color: rgba(255,255,255,0.9);
-            white-space: nowrap;
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 6px;
-            cursor: pointer;
-            z-index: 100;
-            margin-left: 20px;
-        }
-
-        .hamburger span {
-            width: 24px;
-            height: 2px;
-            background-color: var(--color-white);
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        /* =========================================
-           HERO CONTENT
-           ========================================= */
-        .hero-body {
-            flex: 1;
-            display: flex;
-            align-items: flex-end;
-            padding: 0 60px 80px 60px;
-        }
-
-        .grid-layout {
-            display: grid;
-            grid-template-columns: 1.3fr 1fr;
-            gap: 60px;
-            width: 100%;
-            align-items: end;
-        }
-
-        .hero-heading h1 {
-            font-size: 58px;
-            line-height: 1.1;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .hero-description {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            max-width: 520px;
-        }
-
-        .hero-description p {
-            font-size: 15px;
-            line-height: 1.6;
-            color: var(--color-text-dim);
-            font-weight: 400;
-        }
-
-        .cta-container {
-            margin-top: 10px;
-        }
-
-        .btn-cta {
-            display: inline-flex;
-            align-items: center;
-            background-color: var(--color-white);
-            color: var(--color-accent-purple);
-            padding: 14px 28px;
-            border-radius: var(--radius-btn);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 15px;
-            gap: 12px;
-            transition: all 0.2s ease;
-        }
-
-        .btn-cta:hover {
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transform: translateY(-2px);
-        }
-
-        .icon-wrapper {
-            background-color: var(--color-accent-purple);
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .icon-wrapper svg {
-            width: 10px;
-            fill: var(--color-white);
-            transform: rotate(-45deg);
-        }
-
-        /* =========================================
-           STATS SECTION
-           ========================================= */
-        .stats-section {
-            background: linear-gradient(135deg, #e8e4f3 0%, #f5f3fa 100%);
-            padding: 80px 20px;
-        }
-
-        .stats-container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 60px;
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 8px 16px;
-            border: 1px solid var(--color-accent-light);
-            border-radius: 25px;
-            color: var(--color-accent-light);
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-        }
-
-        .badge .dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--color-accent-light);
-            border-radius: 50%;
-            margin-right: 8px;
-        }
-
-        .stats-heading {
-            font-size: clamp(32px, 5vw, 56px);
-            font-weight: 700;
-            color: var(--color-accent-light);
-            line-height: 1.2;
-            margin-bottom: 50px;
-            text-transform: uppercase;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 24px;
-            margin-top: 40px;
-        }
-
-        .stat-card {
-            background: var(--color-white);
-            border-radius: 16px;
-            padding: 32px 24px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
-        .stat-card:nth-child(1) { animation-delay: 0.1s; }
-        .stat-card:nth-child(2) { animation-delay: 0.2s; }
-        .stat-card:nth-child(3) { animation-delay: 0.3s; }
-        .stat-card:nth-child(4) { animation-delay: 0.4s; }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(123, 45, 142, 0.15);
-        }
-
-        .stat-number {
-            font-size: clamp(40px, 6vw, 56px);
-            font-weight: 700;
-            color: var(--color-accent-light);
-            margin-bottom: 16px;
-            display: flex;
-            align-items: baseline;
-        }
-
-        .stat-suffix {
-            font-size: 0.7em;
-            margin-left: 4px;
-        }
-
-        .stat-rating {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 8px;
-        }
-
-        .stars {
-            color: #ffa500;
-            font-size: 24px;
-            letter-spacing: 2px;
-        }
-
-        .google-text {
-            font-size: 11px;
-            color: #666;
-            margin-top: 2px;
-        }
-
-        .stat-description {
-            font-size: 15px;
-            line-height: 1.5;
-            color: var(--color-text-dark);
-        }
-
-        .stats-divider {
-            width: 100%;
-            height: 1px;
-            background: #ddd;
-            margin-top: 80px;
-        }
-
-        /* =========================================
-           SERVICES SECTION
-           ========================================= */
-        .services-section {
-            background-color: var(--color-bg-main);
-            padding: 80px 20px;
-        }
-
-        .services-container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 60px;
-        }
-
-        .section-title {
-            font-size: 48px;
-            font-weight: 700;
-            color: var(--color-accent-purple);
-            text-transform: uppercase;
-            margin-bottom: 50px;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .service-card {
-            height: 320px;
-            border-radius: 30px;
-            position: relative;
-            overflow: hidden;
-            background-size: cover;
-            background-position: center;
-            transition: transform 0.3s ease;
-            /* Placeholder for service card background */
-            background-image: url('assets/images/service%20-%201.png');
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Glassmorphism Overlay */
-        .card-overlay {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            padding: 20px;
-        }
-
-        .card-content h3 {
-            color: var(--color-white);
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .card-content p {
-            color: var(--color-text-dim);
-            font-size: 14px;
-            line-height: 1.4;
-            margin-bottom: 15px;
-            max-width: 90%;
-        }
-
-        .know-more {
-            color: var(--color-white);
-            text-decoration: none;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            float: right;
-            border-bottom: 1px solid rgba(255,255,255,0.5);
-            padding-bottom: 2px;
-            transition: all 0.2s;
-        }
-
-        .know-more:hover {
-            border-bottom-color: var(--color-white);
-        }
-
-        /* =========================================
-           PARTNERS SECTION (NEW)
-           ========================================= */
-        .partners-section {
-            background-color: var(--color-bg-main);
-            padding: 40px 20px 80px;
-        }
-
-        .partners-container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 60px;
-        }
-
-        .partners-divider {
-            width: 100%;
-            height: 1px;
-            background: #d0d0d0;
-            margin: 50px 0;
-        }
-
-        .section-header-center {
-            text-align: center;
-        }
-
-        .partners-title {
-            font-size: 42px;
-            font-weight: 700;
-            color: var(--color-accent-purple);
-            text-transform: uppercase;
-            margin: 0;
-        }
-
-        .partners-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            margin-bottom: 40px;
-            margin-top:50px;
-        }
-
-        .partner-card {
-            background: var(--color-white);
-            border-radius: 20px;
-            padding: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-            height: 130px;
-        }
-
-        .partner-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .partner-card img {
-            max-width: 90%;
-            max-height: 70px;
-            object-fit: contain;
-        }
-
-        /* =========================================
-           RESPONSIVE DESIGN
-           ========================================= */
-        @media (max-width: 1024px) {
-            .navbar { padding: 25px 40px; }
-            .nav-pill { padding: 10px 20px; }
-            .hero-body { padding: 40px 40px 60px 40px; }
-            .grid-layout { grid-template-columns: 1fr; gap: 40px; }
-            .hero-heading h1 { font-size: 48px; max-width: 80%; }
-            .nav-center, .innovations-tag, .btn-contact { display: none; }
-            
-            .nav-pill {
-                background-color: transparent;
-                backdrop-filter: none;
-                padding: 0;
-                margin: 0;
-                justify-content: flex-start;
-                flex: 0;
-            }
-            
-            .hamburger { display: flex; margin-left: auto; }
-
-            .nav-center.active {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100vh;
-                background: rgba(74, 28, 110, 0.98);
-                z-index: 90;
-                align-items: center;
-                justify-content: center;
-            }
-            .nav-links {
-                flex-direction: column;
-                align-items: center;
-                gap: 40px;
-            }
-            .nav-links li a { font-size: 22px; }
-
-            .stats-container, .services-container, .partners-container { padding: 0 40px; }
-            .services-grid, .partners-grid { grid-template-columns: repeat(2, 1fr); }
-            .partners-title { font-size: 36px; }
-        }
-
-        @media (max-width: 768px) {
-            body { padding: 0; }
-            .hero-container { border-radius: 0; min-height: 100vh; margin: 0; }
-            .navbar { padding: 20px; }
-            .hero-body { padding: 20px 20px 50px 20px; }
-            .hero-heading h1 { font-size: 36px; max-width: 100%; }
-            .btn-cta { width: 100%; justify-content: space-between; }
-
-            .stats-section { padding: 60px 20px; }
-            .stats-container { padding: 0 20px; }
-            .stats-grid { grid-template-columns: 1fr; gap: 20px; }
-            .stats-heading { font-size: 28px; }
-            .stat-card { padding: 24px 20px; }
-
-            .services-section { padding: 60px 20px; }
-            .services-container, .partners-container { padding: 0 20px; }
-            .services-grid { grid-template-columns: 1fr; }
-            .section-title { font-size: 32px; margin-bottom: 30px; }
-            
-            .partners-section { padding-bottom: 40px; }
-            .partners-divider { margin: 30px 0; }
-            .partners-title { font-size: 28px; }
-        }
-
-        @media (max-width: 600px) {
-            .partner-card { padding: 15px; height: 100px; }
-        }
-
-        @media (max-width: 480px) {
-            .stat-number { font-size: 36px; }
-            .badge { font-size: 11px; padding: 6px 12px; }
-            /* On small mobiles, keep 2 columns for partners for a better look */
-            .partners-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
+    <header class="header">
+        <div class="container container-header">
+            <a href="index.html" class="logo" style="text-decoration: none;">
+                <span class="logo-text">Credora</span>
+                <span class="logo-subtitle">FINANCING BROKERS LLC</span>
+            </a>
 
-    <main class="hero-container">
-        <div class="content-wrapper">
-            
-            <header class="navbar">
-                <div class="nav-pill">
-                    <div class="logo">
-                        <span class="logo-main">Credora</span>
-                        <span class="logo-sub">Financing Brokers L.L.C.</span>
+            <nav class="nav" id="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html#home" class="nav-link active">Home</a></li>
+                    <li><a href="index.html#services" class="nav-link">Services</a></li>
+                    <li><a href="about-us.html" class="nav-link">About Us</a></li>
+                    <li><a href="faq.html" class="nav-link">FAQs</a></li>
+                </ul>
+            </nav>
+
+            <a href="contact-us.html" class="contact-btn" style="text-decoration: none; display: inline-block;">Contact
+                Us</a>
+            <div class="company-tag-wrapper">
+                <span class="company-tag">AN INNOVATIONS<br>GROUP COMPANY</span>
+            </div>
+
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-overlay"></div>
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        CONNECTING YOU<br>
+                        TO THE RIGHT BANK,<br>
+                        THE EASY WAY
+                    </h1>
+                </div>
+                <div class="hero-description-box">
+                    <p class="hero-text">
+                        We are the largest authorized agency connecting you to all the top banks in the UAE. We offer
+                        reliable, and convenient financial solutions all in one place. From credit cards and personal
+                        loans to business financing, our team ensures a smooth and transparent process, guiding you
+                        every step of the way until approval and beyond.
+                    </p>
+                    <button class="get-started-btn">
+                        Get Started
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="who-we-are" id="about">
+            <div class="container">
+                <div class="section-tag-wrapper">
+                    <span class="section-tag">WHO WE ARE</span>
+                </div>
+
+                <h2 class="section-title">
+                    CREDORA IS A FORWARD-THINKING FIRM BUILT ON TRUST, TRANSPARENCY, AND INNOVATION. WE EMPOWER
+                    INDIVIDUALS AND BUSINESSES TO GROW WITH CONFIDENCE.
+                </h2>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3 class="stat-number" data-target="25000" data-suffix="+">0+</h3>
+                        <p class="stat-description">Customers assisted every month for their financial needs</p>
                     </div>
-
-                    <nav class="nav-center" id="navMenu">
-                        <ul class="nav-links">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Services</a></li>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">FAQs</a></li>
-                        </ul>
-                    </nav>
-
-                    <a href="#" class="btn-contact">Contact Us</a>
-                </div>
-
-                <div class="innovations-tag">
-                    An Innovations<br>Group Company
-                </div>
-
-                <div class="hamburger" id="hamburgerBtn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </header>
-
-            <section class="hero-body">
-                <div class="grid-layout">
-                    <div class="hero-heading">
-                        <h1>Connecting You<br>To The Right Bank,<br>The Easy Way</h1>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <h3 class="stat-number" data-target="4.3" data-decimals="1">0.0</h3>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                        <p class="stat-sub">Google Review</p>
+                        <p class="stat-description">Recognized for reliability, service quality, and customer
+                            satisfaction.</p>
                     </div>
+                    <div class="stat-card">
+                        <h3 class="stat-number" data-target="1200" data-separator=",">0</h3>
+                        <p class="stat-description">A strong team of experienced professionals driving excellence every
+                            day.</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 class="stat-number" data-target="30" data-suffix="+">0+</h3>
+                        <p class="stat-description">Decades of financial expertise built on trust, knowledge, and proven
+                            results.</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
 
-                    <div class="hero-description">
-                        <p>We are the largest authorized agency connecting you to all the top banks in the UAE. We offer reliable and convenient financial solutions all in one place. From credit cards and personal loans to business financing, our team ensures a smooth and transparent process.</p>
-                        
-                        <div class="cta-container">
-                            <a href="#" class="btn-cta">
-                                Get Started
-                                <span class="icon-wrapper">
-                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M5 12h14M12 5l7 7-7 7" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                                    </svg>
-                                </span>
-                            </a>
+
+
+        <div class="container">
+            <hr class="section-divider">
+        </div>
+        <section class="services" id="services">
+            <div class="container">
+                <div class="section-tag-wrapper">
+                    <span class="section-tag">OUR SERVICES</span>
+                </div>
+
+                <h2 class="section-headline">WHAT WE OFFER</h2>
+
+                <div class="services-grid">
+                    <div class="service-card" style="background-image: url('assets/images/credit\ card.webp')">
+                        <div class="service-overlay">
+                            <h3 class="service-title">CREDIT CARD</h3>
+                            <p class="service-desc">Flexible cards with rewards and cashback options.</p>
+                            <a href="#" class="know-more">KNOW MORE</a>
+                        </div>
+                    </div>
+                    <div class="service-card" style="background-image: url('assets/images/whatweoffer\ -2.webp')">
+                        <div class="service-overlay">
+                            <h3 class="service-title">PERSONAL FINANCE</h3>
+                            <p class="service-desc">Quick funds with easy approval and low rates.</p>
+                            <a href="#" class="know-more">KNOW MORE</a>
+                        </div>
+                    </div>
+                    <div class="service-card" style="background-image: url('assets/images/whatweoffer\ -\ 3.webp')">
+                        <div class="service-overlay">
+                            <h3 class="service-title">AUTO FINANCE</h3>
+                            <p class="service-desc">Affordable financing to drive your dream car.</p>
+                            <a href="#" class="know-more">KNOW MORE</a>
+                        </div>
+                    </div>
+                    <div class="service-card" style="background-image: url('assets/images/whatweoffer\ -1.webp')">
+                        <div class="service-overlay">
+                            <h3 class="service-title">HOME FINANCE</h3>
+                            <p class="service-desc">Tailored home loans to fit your budget.</p>
+                            <a href="#" class="know-more">KNOW MORE</a>
+                        </div>
+                    </div>
+                    <div class="service-card" style="background-image: url('assets/images/whatweoffer\ -4.webp')">
+                        <div class="service-overlay">
+                            <h3 class="service-title">SME FINANCE</h3>
+                            <p class="service-desc">Quick funds with easy approval and low rates.</p>
+                            <a href="#" class="know-more">KNOW MORE</a>
+                        </div>
+                    </div>
+                    <div class="service-card" style="background-image: url('assets/images/whatweoffer\ -5.webp')">
+                        <div class="service-overlay">
+                            <h3 class="service-title">PAYROLL ACCOUNTS</h3>
+                            <p class="service-desc">Simple, secure, and on-time salary payments.</p>
+                            <a href="#" class="know-more">KNOW MORE</a>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
+        <div class="container">
+            <hr class="section-divider">
         </div>
+
+        <section class="partners">
+            <div class="container">
+                <div class="section-tag-wrapper align-center">
+                    <span class="section-tag">WE WORK WITH</span>
+                </div>
+
+                <h2 class="section-headline align-center">TRUSTED BANK PARTNERS</h2>
+
+                <div class="partners-grid">
+                    <div class="partner-card">
+                        <img src="assets/images/emirates_nbd.webp" alt="Emirates NBD">
+                    </div>
+                    <div class="partner-card">
+                        <img src="assets/images/fab.webp" alt="FAB">
+                    </div>
+                    <div class="partner-card">
+                        <img src="assets/images/Dubai islamic bank.webp" alt="Dubai Islamic Bank">
+                    </div>
+                    <div class="partner-card">
+                        <img src="assets/images/Emirates Islamic.webp" alt="Emirates Islamic">
+                    </div>
+                    <div class="partner-card">
+                        <img src="assets/images/commercial_bank_of_dubai.webp" alt="CBD">
+                    </div>
+                    <div class="partner-card">
+                        <img src="assets/images/rak_bank.webp" alt="RAKBANK">
+                    </div>
+                    <div class="partner-card">
+                        <img src="assets/images/sharjah_islamic_bank.webp" alt="Sharjah Islamic Bank">
+                    </div>
+                    <div class="partner-card">
+                        <img src="assets/images/deem.webp" alt="Deem">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <hr class="section-divider">
+        </div>
+
+        <section class="our-goal">
+            <div class="container goal-container">
+                <div class="goal-card">
+                    <div class="goal-content-top">
+                        <span class="goal-tag">OUR GOAL</span>
+                        <h2 class="goal-title">EMPOWERING FINANCIAL<br>CONFIDENCE THROUGH<br>TRUST AND INNOVATION</h2>
+                        <p class="goal-desc">
+                            At Credora, our mission is to simplify financial access through trust, transparency, and
+                            innovation. We strive to connect individuals and businesses with the right banking solutions
+                            empowering them to achieve their goals with confidence and ease.
+                        </p>
+                    </div>
+                    <a href="#about" class="find-about-btn">
+                        Find About Us
+                        <span class="arrow-icon">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7"></line>
+                                <polyline points="7 7 17 7 17 17"></polyline>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+                <div class="goal-image">
+                    <img src="assets/images/our-goal.webp" alt="Credora Goal">
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <hr class="section-divider">
+        </div>
+
+        <section class="why-credora">
+            <div class="container">
+                <div class="why-header">
+                    <span class="why-tag">WHY CREDORA</span>
+                    <h2 class="why-title">BECAUSE WE MAKE FINANCE SIMPLE,<br>TRANSPARENT, AND TAILORED TO YOU!</h2>
+                </div>
+
+                <div class="why-grid">
+                    <div class="why-card" style="background-image: url('assets/images/access\ to\ top\ banks.webp')">
+                        <div class="why-overlay">
+                            <span class="why-number">01</span>
+                            <div class="why-content">
+                                <h3 class="why-card-title">ACCESS TO TOP BANKS</h3>
+                                <p class="why-card-desc">Get exclusive deals and financial products from the UAE's
+                                    leading banks all in one place.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="why-card"
+                        style="background-image: url('assets/images/fast\ &\ hassle\ free\ process.webp')">
+                        <div class="why-overlay">
+                            <span class="why-number">02</span>
+                            <div class="why-content">
+                                <h3 class="why-card-title">FAST & HASSLE-FREE PROCESS</h3>
+                                <p class="why-card-desc">Enjoy a smooth, paper-light application experience with quick
+                                    approvals and expert support.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="why-card" style="background-image: url('assets/images/tailored\ financial.webp')">
+                        <div class="why-overlay">
+                            <span class="why-number">03</span>
+                            <div class="why-content">
+                                <h3 class="why-card-title">TAILORED FINANCIAL SOLUTIONS</h3>
+                                <p class="why-card-desc">Whether it's a credit card, personal loan, or mortgage. We
+                                    match you with the right option for your goals.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="why-card" style="background-image: url('assets/images/transparent\ &\ reliable.webp')">
+                        <div class="why-overlay">
+                            <span class="why-number">04</span>
+                            <div class="why-content">
+                                <h3 class="why-card-title">TRANSPARENT & RELIABLE</h3>
+                                <p class="why-card-desc">No hidden fees, no confusion just clear, honest guidance every
+                                    step of the way.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <hr class="section-divider">
+        </div>
+
+        <section class="cta-section">
+            <div class="cta-card">
+                <div class="container">
+                    <div class="cta-content-box">
+                        <h2 class="cta-title">CONNECTING YOU<br>TO THE RIGHT BANK</h2>
+                        <p class="cta-desc">
+                            Schedule a free consultation and discover how Credora can streamline your operations,
+                            optimize
+                            performance, and deliver measurable results.
+                        </p>
+                        <a href="#" class="cta-btn">
+                            Get Started Today
+                            <span class="arrow-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                                    <polyline points="7 7 17 7 17 17"></polyline>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <section class="stats-section">
-        <div class="stats-container">
-            <div class="badge"><span class="dot"></span>WHO WE ARE</div>
-            
-            <h2 class="stats-heading">
-                Credora is a forward-thinking firm built on trust, transparency, and innovation. We empower individuals and businesses to grow with confidence.
-            </h2>
-
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">
-                        <span class="counter" data-target="25000">0</span>
-                        <span class="stat-suffix">+</span>
-                    </div>
-                    <div class="stat-description">
-                        Customers assisted every month for their financial needs.
-                    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">Credora</div>
+                    <p class="footer-tagline">Connecting you to the Right Bank, The Easy Way</p>
+                    <a href="contact-us.html" class="footer-contact-btn">Contact Us</a>
                 </div>
 
-                <div class="stat-card">
-                    <div class="stat-rating">
-                        <span class="stat-number">
-                            <span class="counter" data-target="4.3">0</span>
-                        </span>
-                        <span class="stars">★★★★½</span>
-                    </div>
-                    <div class="google-text">Google Review</div>
-                    <div class="stat-description">
-                        Recognized for reliability, service quality, and customer satisfaction.
-                    </div>
+                <div class="footer-col">
+                    <h4 class="footer-heading">Menu</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="#">Partnerships</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                    </ul>
                 </div>
 
-                <div class="stat-card">
-                    <div class="stat-number">
-                        <span class="counter" data-target="1200">0</span>
-                    </div>
-                    <div class="stat-description">
-                        A strong team of experienced professionals driving excellence every day.
-                    </div>
+                <div class="footer-col">
+                    <h4 class="footer-heading">Socials</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Linkedin</a></li>
+                        <li><a href="#">Twitter (X)</a></li>
+                    </ul>
                 </div>
 
-                <div class="stat-card">
-                    <div class="stat-number">
-                        <span class="counter" data-target="30">0</span>
-                        <span class="stat-suffix">+</span>
-                    </div>
-                    <div class="stat-description">
-                        Decades of financial expertise built on trust, knowledge, and proven results.
-                    </div>
+                <div class="footer-col">
+                    <h4 class="footer-heading">Contact</h4>
+                    <ul class="footer-contact-info">
+                        <li>+971 4 875 4605</li>
+                        <li>info@credorafinance.com</li>
+                        <li>Office No 901, Al Gurg Tower 3,<br>Baniyas Road, Deira,<br>Dubai, UAE</li>
+                    </ul>
                 </div>
             </div>
 
-            <div class="stats-divider"></div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Credora Finance, UAE</p>
+                <p><a href="privacy-policy.html">Privacy Policy</a> | <a href="termsandcondtions.html">T&C</a> |
+                    Developed by <a href="https://gulfnados.com/" target="_blank" rel="noopener noreferrer">Gulfnados
+                        Technology Systems</a>
+                </p>
+            </div>
         </div>
-    </section>
+    </footer>
 
-    <section class="services-section">
-        <div class="services-container">
-            <div class="badge"><span class="dot"></span>OUR SERVICES</div>
-            <h2 class="section-title">What We Offer</h2>
-
-            <div class="services-grid">
-                <div class="service-card" style="background-color: #5c2d91;">
-                    <div class="card-overlay">
-                        <div class="card-content">
-                            <h3>CREDIT CARD</h3>
-                            <p>Flexible cards with rewards and cashback options.</p>
-                            <a href="#" class="know-more">KNOW MORE</a>
-                        </div>
-                    </div>
+    <script src="script.js"></script>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <div class="mobile-menu-container">
+            <div class="mobile-menu-header">
+                <div class="mobile-logo">
+                    <span class="logo-text">Credora</span>
                 </div>
+                <button class="mobile-close-btn" id="mobileMenuClose" aria-label="Close menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
 
-                <div class="service-card" style="background-color: #4a1c6e;">
-                    <div class="card-overlay">
-                        <div class="card-content">
-                            <h3>PERSONAL FINANCE</h3>
-                            <p>Quick funds with easy approval and low rates.</p>
-                            <a href="#" class="know-more">KNOW MORE</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="mobile-menu-body">
+                <ul class="mobile-nav-list">
+                    <li class="mobile-nav-item">
+                        <a href="#home" class="mobile-nav-link">Home</a>
+                        <svg class="chevron-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a href="#services" class="mobile-nav-link">Services</a>
+                        <svg class="chevron-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a href="about-us.html" class="mobile-nav-link">About Us</a>
+                        <svg class="chevron-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a href="faq.html" class="mobile-nav-link">FAQs</a>
+                        <svg class="chevron-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a href="#" class="mobile-nav-link">Partnerships</a>
+                        <svg class="chevron-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </li>
+                </ul>
 
-                <div class="service-card" style="background-color: #5c2d91;">
-                    <div class="card-overlay">
-                        <div class="card-content">
-                            <h3>AUTO FINANCE</h3>
-                            <p>Affordable financing to drive your dream car.</p>
-                            <a href="#" class="know-more">KNOW MORE</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="service-card" style="background-color: #4a1c6e;">
-                    <div class="card-overlay">
-                        <div class="card-content">
-                            <h3>HOME FINANCE</h3>
-                            <p>Tailored home loans to fit your budget.</p>
-                            <a href="#" class="know-more">KNOW MORE</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="service-card" style="background-color: #5c2d91;">
-                    <div class="card-overlay">
-                        <div class="card-content">
-                            <h3>SME FINANCE</h3>
-                            <p>Quick funds with easy approval and low rates.</p>
-                            <a href="#" class="know-more">KNOW MORE</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="service-card" style="background-color: #4a1c6e;">
-                    <div class="card-overlay">
-                        <div class="card-content">
-                            <h3>PAYROLL ACCOUNTS</h3>
-                            <p>Simple, secure, and on-time salary payments.</p>
-                            <a href="#" class="know-more">KNOW MORE</a>
-                        </div>
-                    </div>
+                <div class="mobile-menu-footer">
+                    <a href="contact-us.html" style="text-decoration: none;">
+                        <button class="mobile-action-btn">Contact Us</button>
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
-
-    <section class="partners-section">
-        <div class="partners-container">
-            <div class="partners-divider"></div>
-
-            <div class="section-header-center">
-                <div class="badge">
-                    <span class="dot"></span> WE WORK WITH  
-                </div>
-                <h2 class="partners-title">TRUSTED BANK PARTNERS</h2>
-            </div>
-
-            <div class="partners-grid">
-                <div class="partner-card"><img src="https://www.reemmall.ae/wp-content/uploads/2023/10/EMIRATESNBD.AE_BIG-5d0a63c2.png" alt="Emirates NBD"></div>
-                <div class="partner-card"><img src="https://images.squarespace-cdn.com/content/v1/5fff0c99a2d4904d72abb20d/1623752702657-ULYXZA1UELKA8WHYS15N/FAB-Logo-Membership.png?format=500w" alt="FAB"></div>
-                <div class="partner-card"><img src="https://assets.yallacompare.com/uploads/uae/5845176977c825d91592bc5f/en/DIB%20Logos-03.jpg" alt="Dubai Islamic Bank"></div>
-                <div class="partner-card"><img src="https://www.mediaoffice.ae/-/media/2020/april/11-04/01/emirates-islamic-bank-logo-1024x537.jpg" alt="Emirates Islamic"></div>
-                <div class="partner-card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqYVCgs8OLkNSSG57vh7H94lVMqFWSwVK1DA&s alt="Commercial Bank of Dubai"></div>
-                <div class="partner-card"><img src="https://thedigitalbanker.com/wp-content/uploads/2023/12/Rakbank-photo.png" alt="RAKBANK"></div>
-                <div class="partner-card"><img src="assets/images/sib.png" alt="Sharjah Islamic Bank"></div>
-                <div class="partner-card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfvMNgCIS1NgiScJHKCp27dJXwfhECQWNaxA&s" alt="Deem"></div>
-            </div>
-
-            <div class="partners-divider"></div>
-        </div>
-    </section>
-
-    <script>
-        // Hamburger Menu Toggle
-        document.addEventListener('DOMContentLoaded', () => {
-            const hamburgerBtn = document.getElementById('hamburgerBtn');
-            const navMenu = document.getElementById('navMenu');
-            
-            hamburgerBtn.addEventListener('click', () => {
-                navMenu.classList.toggle('active');
-                
-                const spans = hamburgerBtn.querySelectorAll('span');
-                if (navMenu.classList.contains('active')) {
-                    spans[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
-                    spans[1].style.opacity = '0';
-                    spans[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
-                } else {
-                    spans.forEach(span => {
-                        span.style.transform = 'none';
-                        span.style.opacity = '1';
-                    });
-                }
-            });
-
-            // Counter Animation
-            function animateCounter(element, target, duration = 2000, isDecimal = false) {
-                const start = 0;
-                const increment = target / (duration / 16);
-                let current = start;
-
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        element.textContent = isDecimal ? target.toFixed(1) : Math.floor(target).toLocaleString();
-                        clearInterval(timer);
-                    } else {
-                        element.textContent = isDecimal ? current.toFixed(1) : Math.floor(current).toLocaleString();
-                    }
-                }, 16);
-            }
-
-            function startCounters() {
-                const counters = document.querySelectorAll('.counter');
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const counter = entry.target;
-                            const target = parseFloat(counter.getAttribute('data-target'));
-                            const isDecimal = target % 1 !== 0;
-                            animateCounter(counter, target, 2000, isDecimal);
-                            observer.unobserve(counter);
-                        }
-                    });
-                }, { threshold: 0.5 });
-
-                counters.forEach(counter => {
-                    observer.observe(counter);
-                });
-            }
-
-            startCounters();
-        });
-    </script>
+    </div>
 </body>
+
 </html>
