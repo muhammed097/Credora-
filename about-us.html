@@ -4,26 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/images/credora favi.png">
     <title>About Us - Credora - Insurance Services</title>
-    <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="styles.css">
+        <style>
+            body {
+                font-family: 'Futura', 'Jost', 'Trebuchet MS', Arial, sans-serif !important;
+            }
+        </style>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <header class="header">
         <div class="container container-header">
             <a href="index.html" class="logo" style="text-decoration: none;">
-                <span class="logo-text">Credora</span>
-                <span class="logo-subtitle">FINANCING BROKERS LLC</span>
+                <img src="assets/images/credoraaa.png" alt="Credora Logo" class="logo-img">
             </a>
 
             <nav class="nav" id="nav">
                 <ul class="nav-list">
                     <li><a href="index.html#home" class="nav-link">Home</a></li>
-                    <li><a href="index.html#services" class="nav-link">Services</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
                     <li><a href="about-us.html" class="nav-link active">About Us</a></li>
                     <li><a href="faq.html" class="nav-link">FAQs</a></li>
                 </ul>
@@ -124,7 +129,7 @@
                             achieve their goals with confidence and ease.
                         </p>
                     </div>
-                    <a href="index.html#services" class="find-about-btn">
+                    <a href="services.html" class="find-about-btn">
                         View Our Services
                         <span class="arrow-icon">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -160,23 +165,32 @@
                     </div>
                 </div>
 
-                <div class="vision-stats">
+                <div class="stats-grid">
                     <div class="stat-card">
-                        <h3 class="stat-number" data-target="25000" data-suffix="+">0</h3>
-                        <p class="stat-desc">Customers assisted every month for their financial needs</p>
+                        <h3 class="stat-number" data-target="25000" data-suffix="+" data-separator=",">0+</h3>
+                        <p class="stat-description">Customers assisted every month for their financial needs</p>
                     </div>
                     <div class="stat-card">
-                        <h3 class="stat-number" data-target="4.3">0</h3>
-                        <p class="stat-desc">Recognized for reliability, service quality, and customer satisfaction.</p>
+                        <div class="stat-header">
+                            <h3 class="stat-number" data-target="4.3" data-decimals="1">0.0</h3>
+                            <div class="stars-wrapper">
+                                <div class="stars">
+                                    <img src="assets/images/star.png" alt="4.3 stars" class="stars-img">
+                                </div>
+                                <p class="stat-sub">Google Review</p>
+                            </div>
+                        </div>
+                        <p class="stat-description">Recognized for reliability, service quality, and customer
+                            satisfaction.</p>
                     </div>
                     <div class="stat-card">
-                        <h3 class="stat-number" data-target="1200">0</h3>
-                        <p class="stat-desc">A strong team of experienced professionals driving excellence every day.
-                        </p>
+                        <h3 class="stat-number" data-target="1200" data-separator=",">0</h3>
+                        <p class="stat-description">A strong team of experienced professionals driving excellence every
+                            day.</p>
                     </div>
                     <div class="stat-card">
-                        <h3 class="stat-number" data-target="30" data-suffix="+">0</h3>
-                        <p class="stat-desc">Decades of financial expertise built on trust, knowledge, and proven
+                        <h3 class="stat-number" data-target="30" data-suffix="+">0+</h3>
+                        <p class="stat-description">Decades of financial expertise built on trust, knowledge, and proven
                             results.</p>
                     </div>
                 </div>
@@ -196,7 +210,7 @@
                 <h2 class="section-headline align-center">THE FACES OF OUR COMPANY</h2>
                 <div class="team-intro">
                     <p>
-                        Get to know the people who make our work meaningful, and
+                        Get to know the people who make our work meaningful, and<br>
                         who are ready to help you write your own success story.
                     </p>
                 </div>
@@ -204,92 +218,92 @@
                 <div class="team-grid">
                     <!-- Team Member 1 -->
                     <div class="team-card">
-                        <img src="assets/images/Team 1.jpg" alt="Team Member 1" class="team-image">
+                        <img src="assets/images/kiran.jpg" alt="Team Member 1" class="team-image">
                         <div class="team-overlay">
-                            <h3 class="team-name">John Smith</h3>
-                            <p class="team-role">Role / Designation</p>
+                            <h3 class="team-name">Kirtan Desai</h3>
+                            <p class="team-role">Managing Partner</p>
                         </div>
                     </div>
                     <!-- Team Member 2 -->
                     <div class="team-card">
-                        <img src="assets/images/Team 2.jpg" alt="Team Member 2" class="team-image">
+                        <img src="assets/images/Minu.jpg" alt="Team Member 2" class="team-image">
                         <div class="team-overlay">
-                            <h3 class="team-name">John Smith</h3>
-                            <p class="team-role">Role / Designation</p>
+                            <h3 class="team-name">Minu Chaand</h3>
+                            <p class="team-role">Business Head</p>
                         </div>
                     </div>
                     <!-- Team Member 3 -->
                     <div class="team-card">
-                        <img src="assets/images/Team 3.jpg" alt="Team Member 3" class="team-image">
+                        <img src="assets/images/Sid.jpg" alt="Team Member 3" class="team-image">
                         <div class="team-overlay">
-                            <h3 class="team-name">John Smith</h3>
-                            <p class="team-role">Role / Designation</p>
+                            <h3 class="team-name">Siddhartha Kohli</h3>
+                            <p class="team-role">Business Head</p>
                         </div>
                     </div>
                     <!-- Team Member 4 -->
                     <div class="team-card">
-                        <img src="assets/images/Team 4.jpg" alt="Team Member 4" class="team-image">
+                        <img src="assets/images/Toufique.jpg" alt="Team Member 4" class="team-image">
                         <div class="team-overlay">
-                            <h3 class="team-name">John Smith</h3>
-                            <p class="team-role">Role / Designation</p>
+                            <h3 class="team-name">Mohammed Toufique Khan</h3>
+                            <p class="team-role">Business Head - Islamic Products</p>
                         </div>
                     </div>
                     <!-- Team Member 5 -->
                     <div class="team-card">
-                        <img src="assets/images/Team 5.jpg" alt="Team Member 5" class="team-image">
+                        <img src="assets/images/Rishi.jpg" alt="Team Member 5" class="team-image">
                         <div class="team-overlay">
-                            <h3 class="team-name">John Smith</h3>
-                            <p class="team-role">Role / Designation</p>
+                            <h3 class="team-name">Rishi Tandon</h3>
+                            <p class="team-role">Business Head - SME Products</p>
                         </div>
                     </div>
                     <!-- Team Member 6 -->
                     <div class="team-card">
-                        <img src="assets/images/Team 6.jpg" alt="Team Member 6" class="team-image">
+                        <img src="assets/images/Masroor.jpg" alt="Team Member 6" class="team-image">
                         <div class="team-overlay">
-                            <h3 class="team-name">John Smith</h3>
-                            <p class="team-role">Role / Designation</p>
+                            <h3 class="team-name">Masroor Khan</h3>
+                            <p class="team-role">Sales Head - Abu Dhabi</p>
                         </div>
                     </div>
                     <!-- Team Member 7 -->
                     <div class="team-card">
-                        <img src="assets/images/Team 7.jpg" alt="Team Member 7" class="team-image">
+                        <img src="assets/images/Az.jpg" alt="Team Member 7" class="team-image">
                         <div class="team-overlay">
-                            <h3 class="team-name">John Smith</h3>
-                            <p class="team-role">Role / Designation</p>
+                            <h3 class="team-name">Ankit Zatakia</h3>
+                            <p class="team-role">Head of Strategy</p>
                         </div>
                     </div>
                     <!-- Team Member 8 -->
                     <div class="team-card">
-                        <img src="assets/images/Team 8.jpg" alt="Team Member 8" class="team-image">
+                        <img src="assets/images/Muthanna.jpg" alt="Team Member 8" class="team-image">
                         <div class="team-overlay">
-                            <h3 class="team-name">John Smith</h3>
-                            <p class="team-role">Role / Designation</p>
+                            <h3 class="team-name">Mouthna Saleh</h3>
+                            <p class="team-role">Head of Employee Relations</p>
                         </div>
                     </div>
                     <!-- Team Member 9 -->
                     <div class="team-card">
-                        <img src="assets/images/Team 9.jpg" alt="Team Member 9" class="team-image">
+                        <img src="assets/images/Jheel.jpg" alt="Team Member 9" class="team-image">
                         <div class="team-overlay">
-                            <h3 class="team-name">John Smith</h3>
-                            <p class="team-role">Role / Designation</p>
+                            <h3 class="team-name">Jheel Romal Shah</h3>
+                            <p class="team-role">Head of Finance</p>
                         </div>
                     </div>
                     <!-- Team Member 10 -->
-                    <div class="team-card">
+                    <!-- <div class="team-card">
                         <img src="assets/images/Team 10.jpg" alt="Team Member 10" class="team-image">
                         <div class="team-overlay">
                             <h3 class="team-name">John Smith</h3>
                             <p class="team-role">Role / Designation</p>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- Team Member 11 -->
-                    <div class="team-card">
+                    <!-- <div class="team-card">
                         <img src="assets/images/Team 11.jpg" alt="Team Member 11" class="team-image">
                         <div class="team-overlay">
                             <h3 class="team-name">John Smith</h3>
                             <p class="team-role">Role / Designation</p>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </section>
@@ -329,7 +343,9 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <div class="footer-logo">Credora</div>
+                    <div class="footer-logo">
+                        <img src="assets/images/credoraaa.png" alt="Credora Logo" class="footer-logo-img">
+                    </div>
                     <p class="footer-tagline">Connecting you to the Right Bank, The Easy Way</p>
                     <a href="contact-us.html" class="footer-contact-btn">Contact Us</a>
                 </div>
@@ -338,9 +354,8 @@
                     <h4 class="footer-heading">Menu</h4>
                     <ul class="footer-links">
                         <li><a href="index.html#home">Home</a></li>
-                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="services.html">Services</a></li>
                         <li><a href="about-us.html">About Us</a></li>
-                        <li><a href="#">Partnerships</a></li>
                         <li><a href="faq.html">FAQs</a></li>
                     </ul>
                 </div>
@@ -367,10 +382,7 @@
 
             <div class="footer-bottom">
                 <p>&copy; 2026 Credora Finance, UAE</p>
-                <p><a href="privacy-policy.html">Privacy Policy</a> | <a href="termsandcondtions.html">T&C</a> |
-                    Developed by <a href="https://gulfnados.com/" target="_blank" rel="noopener noreferrer">Gulfnados
-                        Technology Systems</a>
-                </p>
+                <p><a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-and-conditions.html">T&C</a></p>
             </div>
         </div>
     </footer>
@@ -381,7 +393,7 @@
         <div class="mobile-menu-container">
             <div class="mobile-menu-header">
                 <div class="mobile-logo">
-                    <span class="logo-text">Credora</span>
+                    <img src="assets/images/credora - mobile.png" alt="Credora Logo" class="mobile-logo-img">
                 </div>
                 <button class="mobile-close-btn" id="mobileMenuClose" aria-label="Close menu">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -402,7 +414,7 @@
                         </svg>
                     </li>
                     <li class="mobile-nav-item">
-                        <a href="index.html#services" class="mobile-nav-link">Services</a>
+                        <a href="services.html" class="mobile-nav-link">Services</a>
                         <svg class="chevron-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="6 9 12 15 18 9"></polyline>
@@ -422,13 +434,7 @@
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </li>
-                    <li class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link">Partnerships</a>
-                        <svg class="chevron-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </li>
+
                 </ul>
 
                 <div class="mobile-menu-footer">

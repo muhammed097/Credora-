@@ -46,10 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Active link highlighting on scroll
-    window.addEventListener('scroll', () => {
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
 
+    window.addEventListener('scroll', () => {
         let current = '';
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
@@ -67,7 +67,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Number Animation
+    // Scroll Animation Removed
+
+
+
+    // Number Animation with Easing
     const animateNumbers = () => {
         const stats = document.querySelectorAll('.stat-number');
 
@@ -78,25 +82,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     const targetText = target.getAttribute('data-target');
                     if (!targetText) return;
 
-                    const targetValue = parseFloat(targetText);
+                    const targetValue = parseFloat(targetText.replace(/,/g, '')); // Handle commas in data-target if transparent
                     const suffix = target.getAttribute('data-suffix') || '';
                     const decimals = parseInt(target.getAttribute('data-decimals')) || 0;
                     const separator = target.getAttribute('data-separator') || '';
 
-                    const duration = 2000;
-                    const steps = 60;
-                    const stepTime = duration / steps;
+                    // Easing animation
+                    const duration = 2000; // 2 seconds
+                    const startTime = performance.now();
 
-                    let currentVal = 0;
-                    const increment = targetValue / steps;
+                    const updateNumber = (currentTime) => {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
 
-                    const timer = setInterval(() => {
-                        currentVal += increment;
+                        // EaseOutQuart function
+                        const ease = 1 - Math.pow(1 - progress, 4);
 
-                        if (currentVal >= targetValue) {
-                            currentVal = targetValue;
-                            clearInterval(timer);
-                        }
+                        const currentVal = targetValue * ease;
 
                         let formatted = currentVal.toFixed(decimals);
 
@@ -107,8 +109,22 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
 
                         target.textContent = formatted + suffix;
-                    }, stepTime);
 
+                        if (progress < 1) {
+                            requestAnimationFrame(updateNumber);
+                        } else {
+                            // Ensure final value is exact
+                            let finalFormatted = targetValue.toFixed(decimals);
+                            if (separator) {
+                                const finalParts = finalFormatted.split('.');
+                                finalParts[0] = finalParts[0].replace(/\B(?=(\d{3})+(?!\d))/g, separator);
+                                finalFormatted = finalParts.join('.');
+                            }
+                            target.textContent = finalFormatted + suffix;
+                        }
+                    };
+
+                    requestAnimationFrame(updateNumber);
                     observer.unobserve(target);
                 }
             });
@@ -119,85 +135,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
     animateNumbers();
 
+    // Services Solutions Tabs Functionality
+    const solTabs = document.querySelectorAll('.sol-tab');
+    const solPanels = document.querySelectorAll('.sol-panel');
+
+    if (solTabs.length > 0 && solPanels.length > 0) {
+        solTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetId = tab.getAttribute('data-tab');
+
+                // Remove active from all tabs and panels
+                solTabs.forEach(t => t.classList.remove('active'));
+                solPanels.forEach(p => p.classList.remove('active'));
+
+                // Activate clicked tab and corresponding panel
+                tab.classList.add('active');
+                const targetPanel = document.getElementById(targetId);
+                if (targetPanel) {
+                    targetPanel.classList.add('active');
+                }
+            });
+        });
+    }
+
     // FAQ Accordion Functionality
     const faqItems = document.querySelectorAll('.faq-item');
 
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
 
-        question.addEventListener('click', () => {
-            // Close other open items
-            faqItems.forEach(otherItem => {
-                if (otherItem !== item && otherItem.classList.contains('active')) {
-                    otherItem.classList.remove('active');
-                }
-            });
-
-            // Toggle current item
-            item.classList.toggle('active');
-        });
-    });
-
-    // Animated Counter for Statistics
-    function animateCounter(element) {
-        const target = parseFloat(element.getAttribute('data-target'));
-        const suffix = element.getAttribute('data-suffix') || ''; // Get suffix if it exists
-        const duration = 2000; // 2 seconds
-        const increment = target / (duration / 16); // 60fps
-        let current = 0;
-        const isDecimal = target % 1 !== 0;
-        const needsStars = (target === 4.3); // Add stars for 4.3
-
-
-        const updateCounter = () => {
-            current += increment;
-
-            if (current < target) {
-                if (isDecimal) {
-                    element.textContent = current.toFixed(1);
-                } else if (target >= 1000) {
-                    element.textContent = Math.floor(current).toLocaleString();
-                } else {
-                    element.textContent = Math.floor(current);
-                }
-                requestAnimationFrame(updateCounter);
-            } else {
-                // Final value with proper formatting
-                if (isDecimal) {
-                    if (needsStars) {
-                        element.innerHTML = target.toFixed(1) + ' <span class="star-rating">★★★★½</span> <span class="google-review-text">Google Review</span>';
-                    } else {
-                        element.textContent = target.toFixed(1);
+        if (question) {
+            question.addEventListener('click', () => {
+                // Close other open items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
                     }
-                } else if (target >= 1000) {
-                    element.textContent = target.toLocaleString() + suffix;
-                } else {
-                    element.textContent = target + suffix;
-                }
-            }
-        };
+                });
 
-        updateCounter();
-    }
-
-    // Intersection Observer for triggering animation
-    const statNumbers = document.querySelectorAll('.stat-number');
-
-    if (statNumbers.length > 0) {
-        const observerOptions = {
-            threshold: 0.5,
-            rootMargin: '0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-                    entry.target.classList.add('counted');
-                    animateCounter(entry.target);
-                }
+                // Toggle current item
+                item.classList.toggle('active');
             });
-        }, observerOptions);
-
-        statNumbers.forEach(stat => observer.observe(stat));
-    }
+        }
+    });
 });

@@ -1,0 +1,33 @@
+/* Logo image sizing */
+.logo-img {
+    height: 50px;
+    width: auto;
+    display: block;
+}
+
+.footer-logo-img {
+    height: 55px;
+    width: auto;
+    display: block;
+}
+
+/* Responsive logo sizing */
+@media screen and (max-width: 968px) {
+    .logo-img {
+        height: 40px;
+    }
+
+    .footer-logo-img {
+        height: 45px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .logo-img {
+        height: 35px;
+    }
+
+    .footer-logo-img {
+        height: 40px;
+    }
+}
