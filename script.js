@@ -140,22 +140,54 @@ document.addEventListener('DOMContentLoaded', () => {
     const solPanels = document.querySelectorAll('.sol-panel');
 
     if (solTabs.length > 0 && solPanels.length > 0) {
+        // Function to activate a specific tab
+        const activateTab = (targetId) => {
+            // Remove active from all tabs and panels
+            solTabs.forEach(t => t.classList.remove('active'));
+            solPanels.forEach(p => p.classList.remove('active'));
+
+            // Activate the target tab and panel
+            const targetTab = document.querySelector(`.sol-tab[data-tab="${targetId}"]`);
+            const targetPanel = document.getElementById(targetId);
+
+            if (targetTab && targetPanel) {
+                targetTab.classList.add('active');
+                targetPanel.classList.add('active');
+            }
+        };
+
+        // Handle tab clicks
         solTabs.forEach(tab => {
             tab.addEventListener('click', () => {
                 const targetId = tab.getAttribute('data-tab');
-
-                // Remove active from all tabs and panels
-                solTabs.forEach(t => t.classList.remove('active'));
-                solPanels.forEach(p => p.classList.remove('active'));
-
-                // Activate clicked tab and corresponding panel
-                tab.classList.add('active');
-                const targetPanel = document.getElementById(targetId);
-                if (targetPanel) {
-                    targetPanel.classList.add('active');
-                }
+                activateTab(targetId);
             });
         });
+
+        // Handle hash navigation (for dropdown links)
+        const handleHashChange = () => {
+            const hash = window.location.hash.substring(1); // Remove the '#'
+            if (hash) {
+                // Check if the hash corresponds to a tab
+                const targetPanel = document.getElementById(hash);
+                if (targetPanel && targetPanel.classList.contains('sol-panel')) {
+                    activateTab(hash);
+                    // Scroll to the tabs section smoothly
+                    setTimeout(() => {
+                        const tabsSection = document.querySelector('.solutions-tabs-wrapper');
+                        if (tabsSection) {
+                            tabsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    }, 100);
+                }
+            }
+        };
+
+        // Activate tab on page load if hash is present
+        handleHashChange();
+
+        // Listen for hash changes
+        window.addEventListener('hashchange', handleHashChange);
     }
 
     // FAQ Accordion Functionality
@@ -178,4 +210,45 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
+
+    // Rebranding Popup Functionality
+    const rebrandingPopup = document.getElementById('rebrandingPopup');
+    const popupCloseBtn = document.getElementById('popupCloseBtn');
+
+    if (rebrandingPopup) {
+        // Check if popup has been shown in this session
+        const popupShown = sessionStorage.getItem('rebrandingPopupShown');
+
+        if (!popupShown) {
+            // Show popup after a short delay
+            setTimeout(() => {
+                rebrandingPopup.classList.add('active');
+            }, 500);
+
+            // Auto-close after 5 seconds
+            setTimeout(() => {
+                closeRebrandingPopup();
+            }, 5500);
+
+            // Mark as shown in session storage
+            sessionStorage.setItem('rebrandingPopupShown', 'true');
+        }
+
+        // Close button functionality
+        if (popupCloseBtn) {
+            popupCloseBtn.addEventListener('click', closeRebrandingPopup);
+        }
+
+        // Close when clicking outside the popup
+        rebrandingPopup.addEventListener('click', (e) => {
+            if (e.target === rebrandingPopup) {
+                closeRebrandingPopup();
+            }
+        });
+
+        // Function to close popup
+        function closeRebrandingPopup() {
+            rebrandingPopup.classList.remove('active');
+        }
+    }
 });
