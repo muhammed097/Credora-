@@ -34,6 +34,7 @@ body {
     color: var(--text-dark);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
 }
 
 /* Animation Classes Removed */
@@ -3766,6 +3767,7 @@ body {
     transform: scale(0.8);
     transition: transform 0.4s ease;
     pointer-events: auto;
+    box-sizing: border-box;
 }
 
 .rebranding-popup-overlay.active .rebranding-popup {
@@ -3801,8 +3803,10 @@ body {
 }
 
 .popup-credora-logo {
-    height: 60px;
+    height: auto;
+    max-height: 60px;
     width: auto;
+    max-width: 100%;
     margin-bottom: 1rem;
 }
 
@@ -3817,8 +3821,10 @@ body {
 }
 
 .popup-idmm-logo {
-    height: 80px;
+    height: auto;
+    max-height: 80px;
     width: auto;
+    max-width: 100%;
     margin: 1rem 0 0.5rem 0;
 }
 
@@ -3849,8 +3855,10 @@ body {
 /* Mobile Responsive */
 @media screen and (max-width: 600px) {
     .rebranding-popup {
-        padding: 2.5rem 1.5rem;
+        padding: 2rem 1.5rem;
         border-radius: 20px;
+        width: 95%;
+        max-width: 95%;
     }
 
     .popup-close-btn {
@@ -3861,30 +3869,36 @@ body {
         font-size: 1.3rem;
     }
 
-    .popup-credora-logo {
-        height: 50px;
-        margin-bottom: 1.5rem;
-    }
-
-    .popup-heading {
-        font-size: 0.95rem;
-        letter-spacing: 1.5px;
+    .popup-logo-container {
         margin-bottom: 1rem;
     }
 
+    .popup-credora-logo {
+        max-height: 45px;
+        height: auto;
+        margin-bottom: 0.75rem;
+    }
+
+    .popup-heading {
+        font-size: 0.85rem;
+        letter-spacing: 1.5px;
+        margin-bottom: 0.75rem;
+    }
+
     .popup-idmm-logo {
-        height: 60px;
-        margin: 1rem 0;
+        max-height: 60px;
+        height: auto;
+        margin: 0.75rem 0 0.5rem 0;
     }
 
     .popup-subtext {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
         letter-spacing: 1px;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
     }
 
     .popup-message {
-        font-size: 0.95rem;
-        line-height: 1.6;
+        font-size: 0.85rem;
+        line-height: 1.5;
     }
 }
