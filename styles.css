@@ -3304,7 +3304,7 @@ body {
 /* Privacy Policy Hero Section */
 .privacy-hero {
     background-color: var(--primary-purple);
-    padding: 8rem 0 10rem 0;
+    padding: 8rem 0 8rem 0;
     padding-top: calc(var(--header-height) + 6rem);
     margin: 15px;
     margin-top: 15px;
@@ -3426,7 +3426,7 @@ body {
 /* Privacy Policy Responsive */
 @media screen and (max-width: 968px) {
     .privacy-hero {
-        padding: 6rem 0 6rem 0;
+        padding: 7rem 0 7rem 0;
         padding-top: calc(var(--header-height) + 4rem);
     }
 
@@ -3900,5 +3900,23 @@ body {
     .popup-message {
         font-size: 0.85rem;
         line-height: 1.5;
+    }
+}
+
+/* ================= PRIVACY/TERMS PAGE FOOTER OVERRIDE ================= */
+/* These pages have no CTA section, so remove the large top padding from footer */
+.privacy-page .footer {
+    padding-top: 4rem;
+}
+
+@media screen and (max-width: 968px) {
+    .privacy-page .footer {
+        padding-top: 3rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .privacy-page .footer {
+        padding-top: 2.5rem;
     }
 }
