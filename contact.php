@@ -39,14 +39,14 @@ if (empty($full_name) || empty($phone) || empty($service)) {
 //  ✏️  SMTP CONFIGURATION — Fill in your details below
 // ============================================================
 $smtp_host     = 'smtp.hostinger.com';       // Hostinger outgoing mail server
-$smtp_username = 'info@thewriterslaundry.com';  // Your Hostinger email address
-$smtp_password = 'Mrbai@#00';      // Your Hostinger email password
+$smtp_username = '';  // Your Hostinger email address
+$smtp_password = '';      // Your Hostinger email password
 $smtp_port     = 465;                        // Hostinger uses port 465 with SSL
 
-$from_email    = 'info@thewriterslaundry.com';  // Must match smtp_username on Hostinger
+$from_email    = '';  // Must match smtp_username on Hostinger
 $from_name     = 'The Writer Laundry Website';
-$to_email      = 'mrbaiwriting@gmail.com';   // Where you want to RECEIVE the emails
-$to_name       = 'The Writer Laundry';
+$to_email      = '';   // Where you want to RECEIVE the emails
+$to_name       = '';
 // ============================================================
 
 // ── Build HTML email body ────────────────────────────────────
