@@ -104,18 +104,18 @@
 
                     <!-- Right Panel: Form -->
                     <div class="contact-glass-panel form-panel">
-                        <form class="glass-form">
+                        <form class="glass-form" action="contact.php" method="POST" id="contactForm">
                             <div class="glass-form-group">
                                 <label>Full Name</label>
-                                <input type="text" placeholder="Jane Smith">
+                                <input type="text" name="full_name" placeholder="Jane Smith" required>
                             </div>
                             <div class="glass-form-group">
                                 <label>Phone</label>
-                                <input type="tel" placeholder="+123 476 9789">
+                                <input type="tel" name="phone" placeholder="+123 476 9789" required>
                             </div>
                             <div class="glass-form-group">
                                 <label>Service You Are Interested In</label>
-                                <select>
+                                <select name="service" required>
                                     <option value="" disabled selected>Select...</option>
                                     <option value="credit-card">Credit Card</option>
                                     <option value="personal-finance">Personal Finance</option>
@@ -127,7 +127,7 @@
                             </div>
                             <div class="glass-form-group full-width">
                                 <label>How Can I Help You?</label>
-                                <textarea rows="3" placeholder="I need help with..."></textarea>
+                                <textarea rows="3" name="message" placeholder="I need help with..."></textarea>
                             </div>
                             <button type="submit" class="glass-submit-btn full-width">
                                 <span>Submit Form</span>
@@ -200,6 +200,52 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <!-- Form submission toast notification -->
+    <div id="formToast" style="
+        display: none;
+        position: fixed;
+        bottom: 32px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 16px 32px;
+        border-radius: 12px;
+        font-family: 'Jost', sans-serif;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #fff;
+        z-index: 9999;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+        transition: opacity 0.4s ease;
+        white-space: nowrap;
+    "></div>
+
+    <script>
+        (function () {
+            const params = new URLSearchParams(window.location.search);
+            const status = params.get('status');
+            const toast = document.getElementById('formToast');
+
+            if (status === 'success') {
+                toast.textContent = '✅ Thank you! Your message has been sent successfully.';
+                toast.style.background = 'linear-gradient(135deg, #1a7a4a, #2ecc71)';
+                toast.style.display = 'block';
+            } else if (status === 'error') {
+                toast.textContent = '❌ Something went wrong. Please try again or call us directly.';
+                toast.style.background = 'linear-gradient(135deg, #7a1a1a, #e74c3c)';
+                toast.style.display = 'block';
+            }
+
+            if (status) {
+                setTimeout(function () {
+                    toast.style.opacity = '0';
+                    setTimeout(function () { toast.style.display = 'none'; }, 400);
+                }, 5000);
+                history.replaceState(null, '', window.location.pathname);
+            }
+        })();
+    </script>
+
     <!-- Mobile Menu Overlay -->
     <div class="mobile-menu-overlay" id="mobileMenuOverlay">
         <div class="mobile-menu-container">
